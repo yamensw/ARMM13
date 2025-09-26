@@ -1,0 +1,93 @@
+/* ---------- Smooth Theme ---------- */
+:root {
+  color-scheme: light;
+  --ring: 0 122 255;
+  --shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+}
+* { box-sizing: border-box; }
+body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+img { max-width: 100%; display: block; }
+
+/* ---------- Layout helpers ---------- */
+.page { display: none; opacity: 0; transform: translateY(6px); }
+.page.active { display: block; opacity: 1; transform: translateY(0); }
+.fade-in { animation: riseIn .35s ease both; }
+.fade-out { animation: fadeOut .22s ease both; }
+.fade-up { animation: riseIn .45s ease both; }
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,.fade-out,.fade-up { animation: none !important; }
+  .hover-lift { transform: none !important; }
+}
+
+/* ---------- Components ---------- */
+.brand { font-weight: 800; font-size: 1.05rem; color: #2563eb; display: inline-flex; align-items: center; gap: .5rem; }
+.chip { padding: .375rem .75rem; border-radius: .5rem; font-size: .875rem; transition: background .2s ease; }
+.chip:hover { background: rgb(241 245 249); }
+.chip-primary { background: #eef2ff; color:#1d4ed8; border: 1px solid #c7d2fe; }
+.chip-primary:hover { background: #e0e7ff; }
+
+.card { background: #fff; border: 1px solid rgb(226 232 240); border-radius: 0.75rem; box-shadow: var(--shadow); }
+.hover-lift { transition: transform .25s ease, box-shadow .25s ease; }
+.hover-lift:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(16,24,40,.06); }
+
+.btn-primary { background:#2563eb; color:#fff; font-weight:600; padding:.6rem 1rem; border-radius:.55rem; transition: transform .08s ease, background .2s ease, box-shadow .2s ease; display:inline-block; }
+.btn-primary:hover { background:#1d4ed8; }
+.btn-primary:active { transform: translateY(1px); }
+.btn-outline { border:1px solid rgb(203 213 225); background:#fff; font-weight:600; padding:.55rem 1rem; border-radius:.55rem; transition: background .2s ease, box-shadow .2s ease; display:inline-block; }
+.btn-outline:hover { background: rgb(248 250 252); }
+.link { color:#2563eb; }
+.link:hover { text-decoration: underline; }
+.price { color:#2563eb; font-weight:800; }
+
+.focus-outline { outline: none; }
+.focus-outline:focus-visible { box-shadow: 0 0 0 3px rgba(var(--ring), .25); }
+
+.muted { color: rgb(100 116 139); }
+
+.gradient-amber { background-image: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%); }
+.gradient-blue { background-image: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); }
+
+/* ---------- Hero ---------- */
+.hero {
+  border: 1px solid rgb(226 232 240);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(59,130,246,.08) 0%, rgba(59,130,246,0) 100%);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  box-shadow: var(--shadow);
+}
+.hero-inner { padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.25rem); background: #fff; border-radius: .75rem; }
+.title { font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 800; letter-spacing: -0.02em; }
+.subtitle { color: rgb(100 116 139); margin-top: .35rem; }
+
+.section-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; }
+
+/* ---------- Viewer ---------- */
+.viewer-wrap { aspect-ratio: 16/9; background: #000; }
+.viewer-wrap iframe { width: 100%; height: 100%; }
+.viewer-loader {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: radial-gradient(1200px 500px at 50% 20%, rgba(255,255,255,.6), rgba(255,255,255,.9));
+  gap: .75rem;
+}
+.spinner {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 3px solid rgba(37,99,235,.2);
+  border-top-color: #2563eb;
+  animation: spin 1s linear infinite;
+}
+.loader-text { font-size: .9rem; color: rgb(100 116 139); }
+
+/* ---------- Animations ---------- */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

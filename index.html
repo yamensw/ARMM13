@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LiveMarket — Full Listing with 3D + AR</title>
+  <meta name="description" content="Full listing demo with Vectary embedded 3D viewer and AR button" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <!-- NAV -->
+  <nav id="siteNav" class="bg-white/90 backdrop-blur sticky top-0 z-50 border-b border-slate-200 transition-shadow">
+    <div class="mx-auto max-w-6xl px-4 h-14 flex items-center justify-between">
+      <button data-link="home" class="brand focus-outline">🏛️ <span class="sr-only">LiveMarket</span></button>
+      <div class="flex gap-2">
+        <button data-link="home" class="chip focus-outline">Home</button>
+        <button data-link="listing" class="chip focus-outline">Listing</button>
+        <a href="https://app.vectary.com/viewer/v1/?model=350e6b11-2dc4-4b85-8076-0ed2a079733f&env=studio3" target="_blank" rel="noopener" class="chip chip-primary focus-outline">View in 3D</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <main id="home" class="page active">
+    <header class="mx-auto max-w-6xl px-4 pt-10 pb-8 fade-up">
+      <div class="hero">
+        <div class="hero-inner">
+          <h1 class="title">Minimal Marketplace with 3D & AR</h1>
+          <p class="subtitle">Tap a listing to view full details, or open the 3D viewer directly.</p>
+          <div class="mt-6 flex gap-3 flex-wrap">
+            <button data-link="listing" class="btn-primary focus-outline">Open Full Listing</button>
+            <a href="https://app.vectary.com/viewer/v1/?model=350e6b11-2dc4-4b85-8076-0ed2a079733f&env=studio3" target="_blank" rel="noopener" class="btn-outline focus-outline">View in 3D</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="mx-auto max-w-6xl px-4 pb-16 fade-up">
+      <h2 class="section-title">Featured</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Listing Card -->
+        <article class="card hover-lift">
+          <div class="h-56 w-full gradient-amber flex items-center justify-center text-7xl">🦁</div>
+          <div class="p-4">
+            <div class="flex items-baseline justify-between">
+              <h3 class="font-semibold text-lg">Marble Guardian Lion</h3>
+              <div class="price">$3,200</div>
+            </div>
+            <p class="muted mt-1">Hand-carved marble lion with rich texture. Explore in 3D and AR.</p>
+            <ul class="mt-3 text-sm text-slate-600 list-disc list-inside">
+              <li>Material: Marble</li>
+              <li>Dimensions: H 20” × L 28” × W 16”</li>
+              <li>Weight: 65 lbs</li>
+            </ul>
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <button data-link="listing" class="btn-outline w-full focus-outline">View Details</button>
+              <a href="https://app.vectary.com/viewer/v1/?model=350e6b11-2dc4-4b85-8076-0ed2a079733f&env=studio3" target="_blank" rel="noopener" class="btn-primary w-full text-center focus-outline">View in 3D</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Optional second card -->
+        <article class="card hover-lift hidden md:block">
+          <div class="h-56 w-full gradient-blue flex items-center justify-center text-7xl">🏺</div>
+          <div class="p-4">
+            <div class="flex items-baseline justify-between">
+              <h3 class="font-semibold text-lg">Classical Vase</h3>
+              <div class="price">$650</div>
+            </div>
+            <p class="muted mt-1">Ceramic replica with hand-painted motifs.</p>
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <button data-link="listing" class="btn-outline w-full focus-outline">View Details</button>
+              <a href="https://app.vectary.com/viewer/v1/?model=350e6b11-2dc4-4b85-8076-0ed2a079733f&env=studio3" target="_blank" rel="noopener" class="btn-primary w-full text-center focus-outline">View in 3D</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- LISTING (Full details) -->
+  <section id="listing" class="page">
+    <div class="mx-auto max-w-6xl px-4 py-8">
+      <button data-link="home" class="link focus-outline mb-4">← Back to Home</button>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- 3D Viewer (embedded) -->
+        <div class="card overflow-hidden fade-up">
+          <div class="viewer-wrap relative">
+            <div id="viewerLoader" class="viewer-loader">
+              <div class="spinner" aria-hidden="true"></div>
+              <div class="loader-text">Loading 3D Viewer…</div>
+            </div>
+            <iframe id="350e6b11-2dc4-4b85-8076-0ed2a079733f" src="https://app.vectary.com/viewer/v1/?model=350e6b11-2dc4-4b85-8076-0ed2a079733f&env=studio3" frameborder="0" width="100%" height="480"></iframe>
+          </div>
+        </div>
+
+        <!-- Details -->
+        <div class="card p-6 fade-up" style="animation-delay:.08s">
+          <h1 class="text-2xl font-bold">Marble Guardian Lion</h1>
+          <div class="price mt-2">$3,200</div>
+
+          <div class="mt-4 space-y-2 text-sm text-slate-700">
+            <p class="leading-relaxed">A majestic marble lion sculpture with exceptional detailing in the mane and profile. Perfect for entryways, gardens, or interior accents. The 3D viewer lets you examine texture and scale from every angle, and supported mobile devices can launch AR directly from the viewer UI.</p>
+            <p><span class="font-semibold">Material:</span> Marble</p>
+            <p><span class="font-semibold">Dimensions:</span> Height 20”, Length 28”, Width 16”</p>
+            <p><span class="font-semibold">Weight:</span> 65 lbs</p>
+          </div>
+
+          <!-- Buttons BELOW the listing details -->
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            <a href="https://app.vectary.com/viewer/v1/?model=350e6b11-2dc4-4b85-8076-0ed2a079733f&env=studio3" target="_blank" rel="noopener" class="btn-primary text-center focus-outline">View in 3D</a>
+            <button class="btn-outline focus-outline">Share</button>
+          </div>
+          <p class="muted text-xs mt-3">Tip: The Vectary viewer may show an AR icon on supported devices to place the model in your space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- tiny router + smooth nav + reduced motion care -->
+  <script>
+    const pages = ["home", "listing"];
+    let current = "home";
+
+    function show(id) {
+      if (id === current) return;
+      const out = document.getElementById(current);
+      const into = document.getElementById(id);
+
+      out.classList.add('fade-out');
+      setTimeout(() => {
+        out.classList.remove('active','fade-out');
+        into.classList.add('active','fade-in');
+        setTimeout(() => into.classList.remove('fade-in'), 350);
+      }, 220);
+
+      current = id;
+      location.hash = id;
+      window.scrollTo({ top: 0, behavior: prefersReduced() ? 'auto' : 'smooth' });
+    }
+
+    function prefersReduced() {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-link]');
+      if (btn) {
+        e.preventDefault();
+        show(btn.getAttribute('data-link'));
+      }
+    });
+
+    // Nav shadow on scroll (subtle)
+    const nav = document.getElementById('siteNav');
+    const onScroll = () => nav.classList.toggle('shadow-lg', window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Hash routing
+    window.addEventListener('hashchange', () => {
+      const target = location.hash.replace('#','');
+      if (pages.includes(target)) show(target);
+    });
+
+    // Replace iframe with onload handler to hide loader
+    window.addEventListener('DOMContentLoaded', () => {
+      const wrap = document.querySelector('.viewer-wrap');
+      if (!wrap) return;
+      const iframe = wrap.querySelector('iframe');
+      if (iframe) {
+        iframe.addEventListener('load', () => {
+          const loader = document.getElementById('viewerLoader');
+          if (loader) loader.classList.add('hidden');
+        });
+      }
+    });
+
+    // Initial route
+    (function init(){
+      const target = location.hash.replace('#','');
+      current = pages.includes(target) ? target : 'home';
+      document.getElementById(current).classList.add('active');
+    })();
+  </script>
+</body>
+</html>
